@@ -1,9 +1,8 @@
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export default function renderImages(){
+export function renderImages(){
     const link = "https://image.tmdb.org/t/p/original";
     const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}&language=es-MX`;
-    let contenedor = document.getElementById('contenedor');
 
     fetch(url)
     .then(respuesta => respuesta.json())
@@ -14,4 +13,23 @@ export default function renderImages(){
         document.body.style.backgroundImage = `url(${imagen})`;
         document.body.classList.add('bg-cover', 'bg-center'); 
     });
+}
+
+export function validateInputNumber(input){
+    const inputValue = input.value;
+  if (inputValue.includes('e')) {
+    input.value = inputValue.slice(0, -1);
+    return;
+  }
+  const isNumber = !Number.isNaN(Number(inputValue));
+  if (!isNumber) {
+    input.value = inputValue.slice(0, -1);
+  }
+}
+
+
+export function sanitizePassword(input) {
+    const inputValue = input.value;
+    const sanitizedValue = inputValue.replace(/[\\'"]/g, '\\$&'); 
+    return sanitizedValue;
 }
