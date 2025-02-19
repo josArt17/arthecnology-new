@@ -1,4 +1,5 @@
 const urlLogin = import.meta.env.VITE_LOGIN_URL;
+import { showToast } from "./utils";
 
 export default class Login {
     constructor(phoneNumber, password){
@@ -25,11 +26,10 @@ export default class Login {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Respuesta del servidor:', data);
             if (data.success) {
-                console.log('Inicio de sesion exitoso')
+                window.location.replace('/main/main.html');
             } else {
-                alert('Error: ' + data.message);
+                showToast(data.message);
             }
         })
         .catch(error => {

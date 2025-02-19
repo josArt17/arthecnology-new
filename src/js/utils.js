@@ -33,3 +33,19 @@ export function sanitizePassword(input) {
     const sanitizedValue = inputValue.replace(/[\\'"]/g, '\\$&'); 
     return sanitizedValue;
 }
+
+export function showToast(message, type = 'info', duration = 3000) {
+    const toastContainer = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`; // Clase base + tipo (success, error, etc.)
+    toast.textContent = message;
+
+    toastContainer.appendChild(toast); // Agregar al contenedor
+
+    setTimeout(() => {
+        toast.style.opacity = 0; // Iniciar la transición de opacidad
+        setTimeout(() => {
+            toastContainer.removeChild(toast); // Eliminar después de la transición
+        }, 300); // Esperar la duración de la transición
+    }, duration); // Mostrar durante la duración especificada
+}

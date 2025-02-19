@@ -83,6 +83,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.toast {
+  @apply bg-white text-black border rounded p-4 shadow-md transition-opacity duration-300;
+}
+
+.toast.success {
+  @apply border-green-500 text-green-700;
+}
+
+.toast.error {
+  @apply border-red-500 text-red-700;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
