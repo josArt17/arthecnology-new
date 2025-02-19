@@ -27,7 +27,7 @@ export default class Login {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.replace('/main/main.html');
+                window.location.replace('/principal/main.html');
             } else {
                 showToast(data.message);
             }
