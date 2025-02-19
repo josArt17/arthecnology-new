@@ -1,5 +1,5 @@
 import '../css/style.css';
-import {renderImages, validateInputNumber, sanitizePassword } from './utils';
+import {renderImages, validateInputNumber, sanitizePassword, showToast } from './utils';
 import Login from './Login';
 
 const whatsappNumber = document.querySelector('#whatsappNumber');
